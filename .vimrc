@@ -141,3 +141,8 @@ nnoremap <C-n> :call NumberToggle()<cr>
 match ErrorMsg '\s\+$'
 " Delete trailing whitespace:
 nnoremap <Leader>rtw :%s/\s\+$//e<CR>
+
+" disable swap files
+set noswapfile
+
+autocmd FileType go autocmd BufWritePre <buffer> Fmt
