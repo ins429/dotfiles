@@ -1,10 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =8
-let g:netrw_dirhist_1='/Users/plee/.vim'
-let g:netrw_dirhist_2='/Users/plee/Documents/cocoafish/acs-base-deployment/provisioners/step2.image'
-let g:netrw_dirhist_3='/Users/plee/Documents/cocoafish/acs-base-deployment'
-let g:netrw_dirhist_4='/Users/plee/Documents/cocoafish/ACSFunctionalTests'
-let g:netrw_dirhist_5='/Users/plee/Documents/cocoafish/acs/api'
-let g:netrw_dirhist_6='/Users/plee/Documents/cocoafish/acs/website'
-let g:netrw_dirhist_7='/Users/plee/Documents/cocoafish/acs/api/shared/bundle/ruby/1.9.1/bundler/gems/mongoid-2.2.0-4094a3adbb4e'
-let g:netrw_dirhist_8='/Users/plee/Documents/cocoafish/mongoid-2.2.0'
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/Users/peterlee/Sites/webui-spine'
+let g:netrw_dirhist_2='/Users/peterlee/Sites/api'
+let g:netrw_dirhist_3='/Users/peterlee/Documents/AwesomeProject'
+let g:netrw_dirhist_4='/Users/peterlee/Sites/webui-spine'

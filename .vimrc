@@ -101,7 +101,7 @@ map <Leader><bar> :vsplit<CR>
 map <leader>n :NERDTreeToggle<cr>
 map <leader>g :Git<Space>
 map <leader>c :CtrlPClearAllCaches<cr>
-map <leader>/ :Ack<Space>
+map <leader>/ :Ack!<Space>
  
 " Shortcut to yanking to the system clipboard
 map <leader>y :w !pbcopy<CR><CR>
@@ -146,3 +146,25 @@ nnoremap <Leader>rtw :%s/\s\+$//e<CR>
 set noswapfile
 
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
+
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
+" jsx:react
+let g:jsx_ext_required = 0
+let g:syntastic_javascript_checkers = ['jsxhint']
+
+" format json
+com! Prettyjson %!python -m json.tool
+
+""""""""""""""""""""""""""""""
+" => Visual mode related
+""""""""""""""""""""""""""""""
+" Visual mode pressing * or # searches for the current selection
+" Super useful! From an idea by Michael Naumann
+vnoremap <silent> * :call VisualSelection('f')<CR>
+vnoremap <silent> # :call VisualSelection('')
+
+" default indent..
+set shiftwidth=4
+set softtabstop=4
+set expandtab
