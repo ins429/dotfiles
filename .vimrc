@@ -99,7 +99,7 @@ let &t_EI .= "\<Esc>[2 q"
 map <Leader>- :split<CR>
 map <Leader><bar> :vsplit<CR>
 
-map <leader>n :NERDTreeToggle<cr>
+map <leader>n :NERDTreeFind<cr>
 map <leader>g :Git<Space>
 map <leader>c :CtrlPClearAllCaches<cr>
 map <leader>/ :Ack!<Space>
