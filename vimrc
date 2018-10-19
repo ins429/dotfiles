@@ -3,24 +3,29 @@ call plug#begin('~/.vim/plugged')
 Plug 'ap/vim-css-color'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'easymotion/vim-easymotion'
-Plug 'elixir-editors/vim-elixir'
 Plug 'ervandew/supertab'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'mileszs/ack.vim'
-Plug 'mxw/vim-jsx'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'pangloss/vim-javascript'
 Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tomtom/tcomment_vim'
-Plug 'tpope/vim-haml'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-markdown',     { 'for': 'markdown' }
-Plug 'tpope/vim-rails'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-rails'
+Plug 'mattn/emmet-vim'
+
+Plug 'avdgaag/vim-phoenix'
+
+Plug 'sheerun/vim-polyglot'
+Plug 'jparise/vim-graphql'
+Plug 'w0rp/ale'
+
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 set nocompatible                  " Must come first because it changes other options.
@@ -58,8 +63,9 @@ set visualbell                    " No beeping.
 
 set splitright                    " Default split to right side.
 
-set shiftwidth=4                  " default indent
-set softtabstop=4
+set shiftwidth=2                  " default indent
+set softtabstop=2
+set tabstop=2
 
 set expandtab                     " Use spaces instead of tabs
 
@@ -71,18 +77,20 @@ set laststatus=2                  " Show the status line all the time
 set noswapfile                    " disable swap files
 
 set noshowmode                    " No need to display current mode, Airline takes care this
+set cursorline                    " Set background cursorline
+set colorcolumn=100               " Set background vertical line
 
 " CtrlP
 if executable('ag')
-        " Use ag over grep
-        set grepprg=ag\ --nogroup\ --nocolor
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
 
-        " Use ag in CtrlP for listing files. Lightning fast and
-        " respects .gitignore
-        let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  " Use ag in CtrlP for listing files. Lightning fast and
+  " respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
-        " ag is fast enough that CtrlP doesn't need to cache
-        let g:ctrlp_use_caching = 0
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
 endif
 
 " Color Scheme
@@ -103,6 +111,9 @@ map <leader>/ :Ack!<Space>
 map <leader>y :w !pbcopy<CR><CR>
 map <leader>p :r !pbpaste<CR>
 
+" redraw
+map <leader>r :redraw!<CR>
+
 " Removing search highlighting
 nnoremap <ESC><ESC> :nohlsearch<CR>
 
@@ -114,10 +125,7 @@ nnoremap <C-H> <C-W><C-H>
 
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
 
-let g:ackprg = 'ag --nogroup --nocolor --column'
-
-" jsx:react
-let g:jsx_ext_required = 0
+let g:ackprg = 'ag --nogroup --nocolor --column --path-to-ignore ~/.ignore'
 
 " format json
 com! Prettyjson %!python -m json.tool
@@ -132,12 +140,41 @@ let &t_EI .= "\<Esc>[2 q"
 " 5 -> blinking vertical bar
 " 6 -> solid vertical bar
 
-" syntastic
-let g:syntastic_go_checkers = []
-let g:syntastic_javascript_checkers = ['eslint']
-
 " Supertab
 let g:SuperTabDefaultCompletionType = "context"
 
 " Airline
 let g:airline_theme='seoul256'
+
+" Emmet
+let g:user_emmet_leader_key='<C-e>'
+
+" Whitespace highlighting
+highlight ExtraWhitespace ctermbg=red
+
+" Airline
+let g:airline#extensions#tabline#enabled = 1
+
+
+" ale config
+let g:ale_linters = {
+\  'graphql': [],
+\  'javascript': ['eslint']
+\}
+
+let g:ale_fixers = {
+\  'javascript': ['prettier'],
+\  'graphql': ['prettier'],
+\  'elixir': ['mix_format']
+\}
+
+let g:ale_fix_on_save = 1
+let g:ale_javascript_prettier_use_local_config = 1
+let g:ale_typescript_prettier_use_local_config = 1
+let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
+let g:ale_sign_error = "⨉"
+let g:ale_sign_warning = "⚠"
+let g:ale_lint_on_text_changed = 'never'
+
+" fzf
+nnoremap <silent> <C-p> :GFiles --cached --others --exclude-standard<CR>
