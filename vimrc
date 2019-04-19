@@ -1,8 +1,9 @@
 " plugins
 call plug#begin('~/.vim/plugged')
-Plug 'ap/vim-css-color'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+
+Plug 'itchyny/lightline.vim'
+Plug 'mengelbrecht/lightline-bufferline'
+
 Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
 Plug 'junegunn/goyo.vim'
@@ -26,6 +27,8 @@ Plug 'w0rp/ale'
 
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
+
+Plug 'christoomey/vim-system-copy'
 call plug#end()
 
 set nocompatible                  " Must come first because it changes other options.
@@ -76,7 +79,7 @@ set laststatus=2                  " Show the status line all the time
 
 set noswapfile                    " disable swap files
 
-set noshowmode                    " No need to display current mode, Airline takes care this
+set noshowmode                    " No need to display current mode, Lightline takes care this
 set cursorline                    " Set background cursorline
 set colorcolumn=100               " Set background vertical line
 
@@ -116,6 +119,7 @@ map <leader>r :redraw!<CR>
 
 " Removing search highlighting
 nnoremap <ESC><ESC> :nohlsearch<CR>
+nnoremap <C-c><C-c> :nohlsearch<CR>
 
 " split naviagation
 nnoremap <C-J> <C-W><C-J>
@@ -143,8 +147,14 @@ let &t_EI .= "\<Esc>[2 q"
 " Supertab
 let g:SuperTabDefaultCompletionType = "context"
 
-" Airline
-let g:airline_theme='seoul256'
+" Lightline
+let g:lightline = { 'colorscheme': 'seoul256' }
+
+" Lightline tabline
+:set showtabline=2
+let g:lightline.tabline = {'left': [['buffers']]}
+let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
+let g:lightline.component_type   = {'buffers': 'tabsel'}
 
 " Emmet
 let g:user_emmet_leader_key='<C-e>'
@@ -152,13 +162,11 @@ let g:user_emmet_leader_key='<C-e>'
 " Whitespace highlighting
 highlight ExtraWhitespace ctermbg=red
 
-" Airline
-let g:airline#extensions#tabline#enabled = 1
-
 
 " ale config
 let g:ale_linters = {
 \  'graphql': [],
+\  'ruby': [],
 \  'javascript': ['eslint']
 \}
 
@@ -176,5 +184,21 @@ let g:ale_sign_error = "⨉"
 let g:ale_sign_warning = "⚠"
 let g:ale_lint_on_text_changed = 'never'
 
+" Linting on all changes felt too aggressive. The below settings calls lint on
+" certain events, either when I stop interacting or when entering / leaving
+" insert mode - ref: Chris Toomey's vimrc
+set updatetime=1000
+autocmd CursorHold * call ale#Lint()
+autocmd CursorHoldI * call ale#Lint()
+autocmd InsertLeave * call ale#Lint()
+autocmd TextChanged * call ale#Lint()
+let g:ale_lint_on_text_changed = 0
+
 " fzf
-nnoremap <silent> <C-p> :GFiles --cached --others --exclude-standard<CR>
+" nnoremap <silent> <C-p> :GFiles --cached --others --exclude-standard<CR>
+nnoremap <C-p> :Files<cr>
+let $FZF_DEFAULT_COMMAND = 'ag -g "" --hidden'
+
+" python formatter
+map <C-Y> :call yapf#YAPF()<cr>
+imap <C-Y> <c-o>:call yapf#YAPF()<cr>
