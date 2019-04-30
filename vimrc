@@ -197,7 +197,7 @@ let g:ale_lint_on_text_changed = 0
 " fzf
 " nnoremap <silent> <C-p> :GFiles --cached --others --exclude-standard<CR>
 nnoremap <C-p> :Files<cr>
-let $FZF_DEFAULT_COMMAND = 'ag -g "" --hidden'
+let $FZF_DEFAULT_COMMAND = 'ag -g "" --hidden --path-to-ignore ~/.ignore'
 
 " python formatter
 map <C-Y> :call yapf#YAPF()<cr>
