@@ -4,7 +4,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
 
-Plug 'easymotion/vim-easymotion'
 Plug 'ervandew/supertab'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/seoul256.vim'
@@ -36,10 +35,10 @@ set nocompatible                  " Must come first because it changes other opt
 syntax enable                     " Turn on syntax highlighting.
 filetype plugin indent on         " Turn on file type detection.
 
-runtime macros/matchit.vim        " Load the matchit plugin.
-
 set showcmd                       " Display incomplete commands.
 set showmode                      " Display the mode you're in.
+
+runtime macros/matchit.vim        " Load the matchit plugin.
 
 set backspace=indent,eol,start    " Intuitive backspacing.
 
@@ -110,10 +109,6 @@ map <leader>n :NERDTreeFind<cr>
 map <leader>c :CtrlPClearAllCaches<cr>
 map <leader>/ :Ack!<Space>
 
-" Shortcut to yanking to the system clipboard
-map <leader>y :w !pbcopy<CR><CR>
-map <leader>p :r !pbpaste<CR>
-
 " redraw
 map <leader>r :redraw!<CR>
 
@@ -177,12 +172,12 @@ let g:ale_fixers = {
 \}
 
 let g:ale_fix_on_save = 1
+let g:ale_cache_executable_check_failures = 1
 let g:ale_javascript_prettier_use_local_config = 1
 let g:ale_typescript_prettier_use_local_config = 1
 let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
 let g:ale_sign_error = "⨉"
 let g:ale_sign_warning = "⚠"
-let g:ale_lint_on_text_changed = 'never'
 
 " Linting on all changes felt too aggressive. The below settings calls lint on
 " certain events, either when I stop interacting or when entering / leaving
@@ -202,3 +197,8 @@ let $FZF_DEFAULT_COMMAND = 'ag -g "" --hidden --path-to-ignore ~/.ignore'
 " python formatter
 map <C-Y> :call yapf#YAPF()<cr>
 imap <C-Y> <c-o>:call yapf#YAPF()<cr>
+
+" ruby path
+let g:ruby_path = system('echo $HOME/.asdf/shims/ruby')
+
+let g:polyglot_disabled = ['ruby']
