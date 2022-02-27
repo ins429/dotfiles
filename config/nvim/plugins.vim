@@ -24,7 +24,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'jparise/vim-graphql'
 Plug 'w0rp/ale'
 
-Plug '/usr/local/opt/fzf'
+Plug '~/.fzf' " Install using git
 Plug 'junegunn/fzf.vim'
 
 " Plug 'christoomey/vim-system-copy'
