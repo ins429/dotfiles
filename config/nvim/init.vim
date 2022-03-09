@@ -7,3 +7,8 @@ for config_file in split(glob('~/.config/nvim/settings/**/*'), '\n')
     execute 'source' config_file
   endif
 endfor
+
+let g:python_host_prog = '/usr/bin/python2'
+let g:python3_host_prog = '/opt/homebrew/bin/python3'
+
+" lua require("ins429")

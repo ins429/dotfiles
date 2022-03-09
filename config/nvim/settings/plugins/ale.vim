@@ -1,13 +1,8 @@
 let g:ale_linters = {
-      \  'graphql': [],
-      \  'ruby': [],
-      \  'javascript': ['eslint']
+      \  'cs': ['OmniSharp']
       \}
 
 let g:ale_fixers = {
-      \  'javascript': ['prettier'],
-      \  'graphql': ['prettier'],
-      \  'elixir': ['mix_format']
       \}
 
 let g:ale_fix_on_save = 1
