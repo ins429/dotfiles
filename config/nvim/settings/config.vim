@@ -47,3 +47,7 @@ hi VertSplit guibg=bg guifg=bg
 let &t_SI .= "\<Esc>[5 q"
 " solid block
 let &t_EI .= "\<Esc>[2 q"
+
+" lsp
+autocmd CursorHold * lua vim.diagnostic.open_float({focus=false,scope="cursor"})
+autocmd CursorHoldI * silent! lua vim.lsp.buf.signature_help()
