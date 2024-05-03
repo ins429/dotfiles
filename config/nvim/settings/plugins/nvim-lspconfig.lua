@@ -29,21 +29,19 @@ lspconfig.eslint.setup {
   },
 
   root_dir = lspconfig.util.find_git_ancestor,
-  on_new_config = function(config, root_dir)
-    local path = '/Users/peterlee/Code/power-platform-ux'
-    if vim.startswith(root_dir, path) then
-      config.settings.nodePath = "/Users/peterlee/Code/power-platform-ux/packages/build-scripts/node_modules"
-
-      config.settings.options = {
-        resolvePluginsRelativeTo = "/Users/peterlee/Code/power-platform-ux/packages/build-scripts/node_modules",
-        rulePaths = {
-          "/Users/peterlee/Code/power-platform-ux/packages/build-scripts/lib/eslint-rules"
-        },
-        overrideConfigFile = "/Users/peterlee/Code/power-platform-ux/packages/build-scripts/.eslintrc.base.js",
-      }
-    end
-  end
-
+  -- on_new_config = function(config, root_dir)
+  --   local path = '/Users/xxx/aaa'
+  --   if vim.startswith(root_dir, path) then
+  --     config.settings.nodePath = "/Users/xxx/path/**/node_modules"
+  --     config.settings.options = {
+  --       resolvePluginsRelativeTo = "/Users/xxx/path/**/node_modules",
+  --       rulePaths = {
+  --         "/Users/xxx/path/to"
+  --       },
+  --       overrideConfigFile = "/Users/xxx/path/to/*.eslintrc.base.js",
+  --     }
+  --   end
+  -- end
 }
 
 -- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
