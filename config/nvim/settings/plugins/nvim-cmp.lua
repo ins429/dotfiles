@@ -81,55 +81,6 @@ require('lspconfig').elixirls.setup {
 }
 require('lspconfig').eslint.setup {
   capabilities = capabilities,
-
-  on_init = function(client)
-    print('pjlee on_init')
-    local path = client.workspace_folders[1].name
-
-    if string.match(path, '/Users/peterlee/Code/power.platform.ux') then
-      client.config.settings = {
-        eslint = {},
-      }
-      client.config.settings.eslint.nodePath =
-      "/Users/peterlee/Code/power-platform-ux/packages/build-scripts/node_modules"
-
-      client.config.settings.eslint.options = {
-        resolvePluginsRelativeTo = "/Users/peterlee/Code/power-platform-ux/packages/build-scripts/node_modules",
-        rulePaths = {
-          "/Users/peterlee/Code/power-platform-ux/packages/build-scripts/lib/eslint-rules"
-        },
-        overrideConfigFile = "/Users/peterlee/Code/power-platform-ux/packages/build-scripts/.eslintrc.base.js",
-      }
-      print('pjlee', client.config.settings.eslint)
-    end
-
-    client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
-    return true
-  end,
-
-  -- on_attach = function(client, bufnr)
-  --   print('pjlee sup')
-  --   vim.api.nvim_create_autocmd("BufWritePre", {
-  --     buffer = bufnr,
-  --     command = "EslintFixAll",
-  --   })
-  -- end,
-
-  -- settings = {
-  --   nodePath = "/Users/peterlee/Code/power-platform-ux/packages/build-scripts/node_modules",
-  --   options = {
-  --     resolvePluginsRelativeTo = "/Users/peterlee/Code/power-platform-ux/packages/build-scripts/node_modules",
-  --     rulePaths = { "/Users/peterlee/Code/power-platform-ux/packages/build-scripts/lib/eslint-rules" },
-  --     overrideConfigFile = "/Users/peterlee/Code/power-platform-ux/packages/build-scripts/.eslintrc.base.js"
-  --   },
-  -- },
-
-  -- "eslint.nodePath": "/Users/peterlee/Code/power-platform-ux/packages/build-scripts/node_modules",
-  -- "eslint.options": {
-  --   "resolvePluginsRelativeTo": "/Users/peterlee/Code/power-platform-ux/packages/build-scripts/node-modules",
-  --   "rulePaths": ["/Users/peterlee/Code/power-platform-ux/packages/build-scripts/lib/eslint-rules"],
-  --   "overrideConfigFile": "/Users/peterlee/Code/power-platform-ux/packages/build-scripts/.eslintrc.base.js"
-  -- }
 }
 require('lspconfig').tsserver.setup {
   capabilities = capabilities

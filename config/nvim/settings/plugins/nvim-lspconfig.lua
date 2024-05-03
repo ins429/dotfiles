@@ -24,41 +24,24 @@ cmp.setup {
 
 local lspconfig = require('lspconfig')
 lspconfig.eslint.setup {
-  -- cmd = { "vscode-eslint-language-server", "--resolve-plugins-relative-to",
-  --   "/Users/peterlee/Code/power-platform-ux/packages/build-scripts", "--stdio" },
-
   settings = {
-    -- nodePath = "/Users/peterlee/Code/power-platform-ux/packages/build-scripts/node_modules",
-    -- options = {
-    --   resolvePluginsRelativeTo = "/Users/peterlee/Code/power-platform-ux/packages/build-scripts/node_modules",
-    --   rulePaths = { "/Users/peterlee/Code/power-platform-ux/packages/build-scripts/lib/eslint-rules" },
-    --   overrideConfigFile = "/Users/peterlee/Code/power-platform-ux/packages/build-scripts/.eslintrc.base.js"
-    -- },
     workingDirectory = { mode = 'location' },
   },
 
   root_dir = lspconfig.util.find_git_ancestor,
   on_new_config = function(config, root_dir)
-    config.settings.workspaceFolder = {
-      uri = root_dir,
-      name = vim.fn.fnamemodify(root_dir, ':t'),
-    }
-    print('pjlee33', config.settings, config.settings.workingDirectory.mode)
     local path = '/Users/peterlee/Code/power-platform-ux'
     if vim.startswith(root_dir, path) then
-      print('pjlee44')
-      config.settings.nodePath =
-      "../../packages/build-scripts/node_modules"
+      config.settings.nodePath = "/Users/peterlee/Code/power-platform-ux/packages/build-scripts/node_modules"
 
       config.settings.options = {
-        resolvePluginsRelativeTo = "../../packages/build-scripts/node_modules",
+        resolvePluginsRelativeTo = "/Users/peterlee/Code/power-platform-ux/packages/build-scripts/node_modules",
         rulePaths = {
-          "../../packages/build-scripts/lib/eslint-rules"
+          "/Users/peterlee/Code/power-platform-ux/packages/build-scripts/lib/eslint-rules"
         },
-        overrideConfigFile = "../../packages/build-scripts/.eslintrc.base.js",
+        overrideConfigFile = "/Users/peterlee/Code/power-platform-ux/packages/build-scripts/.eslintrc.base.js",
       }
     end
-    print('pjlee333', config.settings, config.settings.nodePath)
   end
 
 }

@@ -3,7 +3,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'
 Plug 'mengelbrecht/lightline-bufferline'
 
-" Plug 'ervandew/supertab'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'mileszs/ack.vim'
@@ -13,39 +12,27 @@ Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-markdown',     { 'for': 'markdown' }
 Plug 'tpope/vim-surround'
-" Plug 'tpope/vim-rails'
 Plug 'mattn/emmet-vim'
-
-Plug 'avdgaag/vim-phoenix'
-
-" Plug 'leafgarland/typescript-vim'
-" Plug 'sheerun/vim-polyglot'
-" Plug 'jparise/vim-graphql'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-" Plug 'OmniSharp/omnisharp-vim'
-" Plug 'dense-analysis/ale'
+" Syntax highlighting for various languages
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
+" LSPs and Autocompletion
+Plug 'williamboman/mason.nvim', { 'do': ':MasonUpdate' }
+Plug 'williamboman/mason-lspconfig.nvim'
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
 
-" LSP Support
-Plug 'neovim/nvim-lspconfig'             " Required
-Plug 'williamboman/mason.nvim'           " Optional
-Plug 'williamboman/mason-lspconfig.nvim' " Optional
+" Autoformatting
+Plug 'mhartington/formatter.nvim'
 
-" Autocompletion Engine
-Plug 'hrsh7th/nvim-cmp'         " Required
-Plug 'hrsh7th/cmp-nvim-lsp'     " Required
-Plug 'hrsh7th/cmp-buffer'       " Optional
-Plug 'hrsh7th/cmp-path'         " Optional
-Plug 'saadparwaiz1/cmp_luasnip' " Optional
-Plug 'hrsh7th/cmp-nvim-lua'     " Optional
-
-"  Snippets
-Plug 'L3MON4D3/LuaSnip'             " Required
-Plug 'rafamadriz/friendly-snippets' " Optional
-
-Plug 'VonHeikemen/lsp-zero.nvim', {'branch': 'v1.x'}
+Plug 'nvim-lua/plenary.nvim'
 
 call plug#end()
