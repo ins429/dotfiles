@@ -3,6 +3,10 @@
 These preferences apply across repositories and working directories. Follow
 explicit task requirements and repository-specific conventions when they differ.
 
+## Proactively suggest agentic workflows
+
+When discussing or performing work, look for high-value opportunities where agents could meaningfully reduce manual effort or improve outcomes, including improvements to the broader workflow beyond the immediate task. Briefly suggest what an agent could handle, the expected benefit, and where human review or approval should remain. Prefer practical, lightweight approaches; recommend simple automation when agent reasoning is unnecessary. Avoid low-value, repetitive, or forced suggestions. Offer a short suggestion first and elaborate only if the user is interested. Do not implement the suggestion or expand the task without approval.
+
 ## Clarifying questions
 
 When the user prompts "questions?", ask any necessary clarifying questions one
