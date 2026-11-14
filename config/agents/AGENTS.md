@@ -15,6 +15,11 @@ Wait for each answer before asking the next question; do not batch questions
 into a list or multi-question form. If no clarification is needed, say so
 briefly rather than inventing questions.
 
+## Recommended options
+
+When presenting choices or options, clearly mark the recommended option when
+one is available and briefly explain why.
+
 ## Existing code and commit history
 
 When modifying code written by others, preserve its established patterns as
