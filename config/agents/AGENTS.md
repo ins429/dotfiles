@@ -30,8 +30,9 @@ this takes precedence over aggressive DRY and functional-style preferences.
 Favor removing unnecessary code when it is safe and in scope, but isolate
 removal and cleanup work in a dedicated commit. Keep DRY refactors and other
 structural refactors in separate commits from feature additions or bug fixes.
-Each commit should have one clear purpose and a message explaining what changed
-and why, preserving an easy-to-review audit trail. Do not mix unrelated changes
+Always break work into multiple commits when needed, applying the single
+responsibility principle to commits: each commit should have one clear purpose
+and a message explaining what changed and why, preserving an easy-to-review audit trail. Do not mix unrelated changes
 or rewrite existing commit history without explicit permission. These guidelines
 govern commit organization, not permission to create commits.
 
