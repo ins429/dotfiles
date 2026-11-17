@@ -30,6 +30,14 @@ and why, preserving an easy-to-review audit trail. Do not mix unrelated changes
 or rewrite existing commit history without explicit permission. These guidelines
 govern commit organization, not permission to create commits.
 
+## Simplicity and scope
+
+Do not overengineer. Keep changes well scoped to the requested task, and prefer
+the simplest solution that fully meets the current requirements. Avoid
+speculative features, premature abstractions, and unrelated cleanup or
+refactoring. These constraints take precedence over DRY and other style
+preferences when they would add unnecessary complexity or expand scope.
+
 ## Declarative coding
 
 Prefer declarative coding patterns when they improve clarity. Express intent
